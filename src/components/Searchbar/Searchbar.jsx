@@ -8,25 +8,25 @@ import {
   SearchFormInput,
 } from './Searchbar.styled';
 
-export default class Searchbar extends Component {
+export class Searchbar extends Component {
   state = {
-    searchValue: '',
+    query: '',
   };
 
-  handleSearchChange = event => {
-    this.setState({ searchValue: event.currentTarget.value.toLowerCase() });
+  handleSearchQuery = event => {
+    this.setState({ query: event.currentTarget.value.toLowerCase() });
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    if (this.state.searchValue.trim() === '') {
+    if (this.state.query.trim() === '') {
       alert('Input some value');
       return;
     }
 
-    this.props.onSubmit(this.state.searchValue);
-    this.setState({ searchValue: '' });
+    this.props.onSubmit(this.state.query);
+    this.setState({ query: '' });
   };
   render() {
     return (
@@ -38,9 +38,9 @@ export default class Searchbar extends Component {
 
           <SearchFormInput
             type="text"
-            name="searchValue"
-            value={this.state.searchValue}
-            onChange={this.handleSearchChange}
+            name="query"
+            value={this.state.query}
+            onChange={this.handleSearchQuery}
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
