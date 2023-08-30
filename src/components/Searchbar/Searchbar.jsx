@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
 import { ImSearch } from 'react-icons/im';
 import {
   SearchbarHeader,
@@ -21,7 +21,7 @@ export class Searchbar extends Component {
     event.preventDefault();
 
     if (this.state.query.trim() === '') {
-      alert('Input some value');
+      toast.error('Please input some value');
       return;
     }
 
@@ -50,7 +50,3 @@ export class Searchbar extends Component {
     );
   }
 }
-
-Searchbar.propTypes = {
-  onSubmit: PropTypes.func,
-};
